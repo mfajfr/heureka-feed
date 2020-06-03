@@ -24,7 +24,7 @@ class Reader
     {
         $this->xml = new \XMLReader();
         $this->xml->open($url);
-        while ($this->xml->read() && $this->xml->name != 'SHOPITEM') { 
+        while ($this->xml->read() && $this->xml->name != 'SHOPITEM') {
         }
     }
 
@@ -63,15 +63,15 @@ class Reader
         foreach ($shopitem->DELIVERY as $delivery) {
             $deliveries[] = new Delivery(
                 $delivery->DELIVERY_ID,
-                $delivery->DELIVERY_PRICE,
-                $delivery->DELIVERY_PRICE_COD
+                floatval($delivery->DELIVERY_PRICE),
+                floatval($delivery->DELIVERY_PRICE_COD)
             );
         }
 
-        $gift = null;
-        if (array_key_exists('GIFT', $shopitem)) {
-            $gift = new Gift($shopitem->GIFT, $shopitem->GIFT->attributes('id'));
-        }
+//        $gift = null;
+//        if (array_key_exists('GIFT', $shopitem)) {
+//            $gift = new Gift($shopitem->GIFT, $shopitem->GIFT->attributes('id'));
+//        }
 
         return new ShopItem(
             $shopitem->ITEM_ID,

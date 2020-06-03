@@ -1,19 +1,19 @@
 {
-  "name": "mfajfr/heureka-feed",
-  "description": "Heureka feed into objects",
-  "type": "library",
-  "require": {
-    "php": ">=7.3.*"
-  },
-  "autoload": {
-    "psr-4": {
-      "HeurekaFeed\\": "src/"
-    }
-  },
   "authors": [
     {
       "name": "Ing. Marek Fajfr",
       "email": "mfajfr90@gmail.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "HeurekaFeed\\": "src/"
+    }
+  },
+  "description": "Heureka feed into objects",
+  "name": "mfajfr/heureka-feed",
+  "require": {
+    "php": "^7.3"
+  },
+  "type": "library"
 }

@@ -46,8 +46,12 @@ class Reader
     /**
      * @return ShopItem
      */
-    public function loadShopItem(): ShopItem
+    public function loadShopItem(): ?ShopItem
     {
+        if ($this->xml->name != 'SHOPITEM') {
+            return null;
+        }
+
         $shopitem = new \SimpleXMLElement($this->xml->readOuterXml());
 
         $params = [];
@@ -98,6 +102,6 @@ class Reader
 
     public function next()
     {
-        $this->xml->next('SHOPITEM');
+        return $this->xml->next('SHOPITEM');
     }
 }

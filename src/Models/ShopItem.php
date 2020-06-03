@@ -147,7 +147,7 @@ class ShopItem implements \JsonSerializable
         string $isbn,
         string $itemGroupId,
         string $accessory,
-        ?Gift $gift
+        ?Gift $gift = null
     ) {
         $this->itemId = $itemId;
         $this->productName = $productName;

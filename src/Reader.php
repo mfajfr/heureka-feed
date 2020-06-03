@@ -95,8 +95,7 @@ class Reader
             $shopitem->ITEM_TYPE,
             $shopitem->ISBN,
             $shopitem->ITEMGROUP_ID,
-            $shopitem->ACCESSORY,
-            $gift
+            $shopitem->ACCESSORY
         );
     }
 

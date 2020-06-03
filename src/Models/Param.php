@@ -41,4 +41,20 @@ class Param implements \JsonSerializable
             'val' => $this->val,
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVal(): string
+    {
+        return $this->val;
+    }
 }

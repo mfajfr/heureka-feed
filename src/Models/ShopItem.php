@@ -212,4 +212,188 @@ class ShopItem implements \JsonSerializable
 
         return $json;
     }
+
+    /**
+     * @return string
+     */
+    public function getItemId(): string
+    {
+        return $this->itemId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductName(): string
+    {
+        return $this->productName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProduct(): string
+    {
+        return $this->product;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImgUrl(): string
+    {
+        return $this->imgUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImgUrlAlternative(): string
+    {
+        return $this->imgUrlAlternative;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoUrl(): string
+    {
+        return $this->videoUrl;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPriceVat(): float
+    {
+        return $this->priceVat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVat(): string
+    {
+        return $this->vat;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHeurekaCpc(): float
+    {
+        return $this->heurekaCpc;
+    }
+
+    /**
+     * @return string
+     */
+    public function getManufacturer(): string
+    {
+        return $this->manufacturer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategoryText(): string
+    {
+        return $this->categoryText;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEan(): string
+    {
+        return $this->ean;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductNo(): string
+    {
+        return $this->productNo;
+    }
+
+    /**
+     * @return Param[]
+     */
+    public function getParams(): array
+    {
+        return $this->params;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDeliveryDate(): int
+    {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * @return Delivery[]
+     */
+    public function getDeliveries(): array
+    {
+        return $this->deliveries;
+    }
+
+    /**
+     * @return string
+     */
+    public function getItemType(): string
+    {
+        return $this->itemType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsbn(): string
+    {
+        return $this->isbn;
+    }
+
+    /**
+     * @return string
+     */
+    public function getItemGroupId(): string
+    {
+        return $this->itemGroupId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessory(): string
+    {
+        return $this->accessory;
+    }
+
+    /**
+     * @return Gift|null
+     */
+    public function getGift(): ?Gift
+    {
+        return $this->gift;
+    }
 }

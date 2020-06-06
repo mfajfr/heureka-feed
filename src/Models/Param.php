@@ -25,15 +25,6 @@ class Param implements \JsonSerializable
         $this->val = $val;
     }
 
-    /**
-     * @param  array $array
-     * @return static
-     */
-    public static function createFromArray(array $array): Param
-    {
-        return new static($array['name'], $array['val']);
-    }
-
     public function jsonSerialize()
     {
         return [

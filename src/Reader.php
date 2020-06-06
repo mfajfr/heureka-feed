@@ -2,6 +2,7 @@
 
 namespace HeurekaFeed;
 
+use Cocur\Slugify\Slugify;
 use HeurekaFeed\Models\Delivery;
 use HeurekaFeed\Models\Gift;
 use HeurekaFeed\Models\Param;
@@ -16,12 +17,18 @@ class Reader
     protected $xml;
 
     /**
+     * @var Slugify
+     */
+    protected $slugify;
+
+    /**
      * Reader constructor.
      *
      * @param string $url
      */
     public function __construct(string $url)
     {
+        $this->slugify = new Slugify();
         $this->xml = new \XMLReader();
         $this->xml->open($url);
         while ($this->xml->read() && $this->xml->name != 'SHOPITEM') {
@@ -56,12 +63,12 @@ class Reader
 
         $params = [];
         foreach ($shopitem->PARAM as $param) {
-            $params[] = new Param($param->PARAM_NAME, $param->VAL);
+            $params[$this->slugify->slugify($param->PARAM_NAME)] = new Param($param->PARAM_NAME, $param->VAL);
         }
 
         $deliveries = [];
         foreach ($shopitem->DELIVERY as $delivery) {
-            $deliveries[] = new Delivery(
+            $deliveries[$this->slugify->slugify($delivery->DELIVERY_ID)] = new Delivery(
                 $delivery->DELIVERY_ID,
                 floatval($delivery->DELIVERY_PRICE),
                 floatval($delivery->DELIVERY_PRICE_COD)

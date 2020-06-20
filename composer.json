@@ -13,7 +13,7 @@
   "description": "Heureka feed into objects",
   "name": "mfajfr/heureka-feed",
   "require": {
-    "php": "^7.3",
+    "php": "^7.2",
     "ext-xmlreader": "*",
     "ext-simplexml": "*",
     "cocur/slugify": "^4.0"

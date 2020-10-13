@@ -7,7 +7,7 @@ use HeurekaFeed\Models\Delivery;
 use HeurekaFeed\Models\Gift;
 use HeurekaFeed\Models\Param;
 use HeurekaFeed\Models\ShopItem;
-use HeurekaFeed\Shop\Shop;
+use HeurekaFeed\Models\Shop;
 
 class Reader
 {

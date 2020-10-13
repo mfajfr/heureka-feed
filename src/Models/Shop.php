@@ -1,6 +1,6 @@
 <?php
 
-namespace HeurekaFeed\Shop;
+namespace HeurekaFeed\Models;
 
 use HeurekaFeed\Models\ShopItem;
 

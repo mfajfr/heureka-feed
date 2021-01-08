@@ -301,6 +301,14 @@ class ShopItem implements \JsonSerializable
     }
 
     /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
      * @return string
      */
     public function getVat(): string

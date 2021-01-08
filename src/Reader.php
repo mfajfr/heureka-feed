@@ -90,6 +90,7 @@ class Reader
             $shopitem->IMGURL_ALTERNATIVE,
             $shopitem->VIDEO_URL,
             floatval($shopitem->PRICE_VAT),
+            floatval($shopitem->PRICE),
             $shopitem->VAT,
             floatval($shopitem->HEUREKA_CPC),
             $shopitem->MANUFACTURER,
@@ -102,7 +103,8 @@ class Reader
             $shopitem->ITEM_TYPE,
             $shopitem->ISBN,
             $shopitem->ITEMGROUP_ID,
-            $shopitem->ACCESSORY
+            $shopitem->ACCESSORY,
+            $shopitem->STOCK,
         );
     }
 

@@ -41,6 +41,10 @@ class ShopItem implements \JsonSerializable
      */
     protected $priceVat;
     /**
+     * @var float
+     */
+    protected $price;
+    /**
      * @var string 
      */
     protected $vat;
@@ -93,6 +97,10 @@ class ShopItem implements \JsonSerializable
      */
     protected $accessory;
     /**
+     * @var int
+     */
+    protected $stock;
+    /**
      * @var Gift|null 
      */
     protected $gift;
@@ -109,6 +117,7 @@ class ShopItem implements \JsonSerializable
      * @param string     $imgUrlAlternative
      * @param string     $videoUrl
      * @param float      $priceVat
+     * @param float      $price
      * @param string     $vat
      * @param float      $heurekaCpc
      * @param string     $manufacturer
@@ -122,6 +131,7 @@ class ShopItem implements \JsonSerializable
      * @param string     $isbn
      * @param string     $itemGroupId
      * @param string     $accessory
+     * @param int        $stock
      * @param Gift|null  $gift
      */
     public function __construct(
@@ -134,6 +144,7 @@ class ShopItem implements \JsonSerializable
         string $imgUrlAlternative,
         string $videoUrl,
         float $priceVat,
+        float $price,
         string $vat,
         float $heurekaCpc,
         string $manufacturer,
@@ -147,6 +158,7 @@ class ShopItem implements \JsonSerializable
         string $isbn,
         string $itemGroupId,
         string $accessory,
+        int $stock,
         ?Gift $gift = null
     ) {
         $this->itemId = $itemId;
@@ -158,6 +170,7 @@ class ShopItem implements \JsonSerializable
         $this->imgUrlAlternative = $imgUrlAlternative;
         $this->videoUrl = $videoUrl;
         $this->priceVat = $priceVat;
+        $this->price = $price;
         $this->vat = $vat;
         $this->heurekaCpc = $heurekaCpc;
         $this->manufacturer = $manufacturer;
@@ -171,12 +184,23 @@ class ShopItem implements \JsonSerializable
         $this->isbn = $isbn;
         $this->itemGroupId = $itemGroupId;
         $this->accessory = $accessory;
+        $this->stock = $stock;
         $this->gift = $gift;
     }
 
     public function jsonSerialize()
     {
-        $json = [
+        $deliveries = [];
+        foreach ($this->deliveries as $delivery) {
+            $deliveries[] = $delivery->jsonSerialize();
+        }
+
+        $params = [];
+        foreach ($this->params as $param) {
+            $params[] = $param->jsonSerialize();
+        }
+
+        return [
             'itemId' => $this->itemId,
             'productName' => $this->productName,
             'product' => $this->product,
@@ -197,20 +221,11 @@ class ShopItem implements \JsonSerializable
             'isbn' => $this->isbn,
             'itemGroupId' => $this->itemGroupId,
             'accessory' => $this->accessory,
-            'params' => [],
-            'deliveries' =>[],
+            'params' => $params,
+            'deliveries' => $deliveries,
+            'stock' => $this->stock,
             'gift' => $this->gift ? $this->gift->jsonSerialize() : null,
         ];
-
-        foreach ($this->deliveries as $delivery) {
-            $json['deliveries'][] = $delivery->jsonSerialize();
-        }
-
-        foreach ($this->params as $param) {
-            $json['params'][] = $param->jsonSerialize();
-        }
-
-        return $json;
     }
 
     /**
@@ -387,6 +402,14 @@ class ShopItem implements \JsonSerializable
     public function getAccessory(): string
     {
         return $this->accessory;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStock(): int
+    {
+        return $this->stock;
     }
 
     /**

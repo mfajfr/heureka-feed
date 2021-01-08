@@ -104,7 +104,7 @@ class Reader
             $shopitem->ISBN,
             $shopitem->ITEMGROUP_ID,
             $shopitem->ACCESSORY,
-            $shopitem->STOCK
+            intval($shopitem->STOCK)
         );
     }
 

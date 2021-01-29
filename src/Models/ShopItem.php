@@ -101,39 +101,14 @@ class ShopItem implements \JsonSerializable
      */
     protected $stock;
     /**
+     * @var string
+     */
+    protected $quantityUnit;
+    /**
      * @var Gift|null 
      */
     protected $gift;
 
-    /**
-     * ShopItem constructor.
-     *
-     * @param string     $itemId
-     * @param string     $productName
-     * @param string     $product
-     * @param string     $description
-     * @param string     $url
-     * @param string     $imgUrl
-     * @param string     $imgUrlAlternative
-     * @param string     $videoUrl
-     * @param float      $priceVat
-     * @param float      $price
-     * @param string     $vat
-     * @param float      $heurekaCpc
-     * @param string     $manufacturer
-     * @param string     $categoryText
-     * @param string     $ean
-     * @param string     $productNo
-     * @param Param[]    $params
-     * @param int        $deliveryDate
-     * @param Delivery[] $deliveries
-     * @param string     $itemType
-     * @param string     $isbn
-     * @param string     $itemGroupId
-     * @param string     $accessory
-     * @param int        $stock
-     * @param Gift|null  $gift
-     */
     public function __construct(
         string $itemId,
         string $productName,
@@ -159,6 +134,7 @@ class ShopItem implements \JsonSerializable
         string $itemGroupId,
         string $accessory,
         int $stock,
+        string $quantityUnit,
         ?Gift $gift = null
     ) {
         $this->itemId = $itemId;
@@ -185,6 +161,7 @@ class ShopItem implements \JsonSerializable
         $this->itemGroupId = $itemGroupId;
         $this->accessory = $accessory;
         $this->stock = $stock;
+        $this->quantityUnit = $quantityUnit;
         $this->gift = $gift;
     }
 
@@ -426,5 +403,10 @@ class ShopItem implements \JsonSerializable
     public function getGift(): ?Gift
     {
         return $this->gift;
+    }
+
+    public function getQuantityUnit(): string
+    {
+        return $this->quantityUnit;
     }
 }
